@@ -1,165 +1,317 @@
 <div class="page-card">
-    <style>
-      .section-head h2 {
-        color: #800000;
-        font-size: 1.8rem;
-        margin-bottom: 8px;
-      }
-  
-      .section-head p {
-        color: #7b5d5d;
-        margin-bottom: 20px;
-      }
-  
-      .filter-wrap {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-bottom: 22px;
-      }
-  
-      .filter-btn {
-        border: 1px solid #efd5d5;
-        background: #fff6f6;
-        color: #800000;
-        padding: 10px 14px;
-        border-radius: 999px;
-        cursor: pointer;
-        font-weight: 600;
-        transition: 0.25s;
-      }
-  
-      .filter-btn.active-filter {
-        background: #800000;
-        color: white;
-        border-color: #aa1212;
-      }
-  
+  <style>
+    .section-head h2 {
+      color: #800000;
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+
+    .section-head p {
+      color: #7b5d5d;
+      margin-bottom: 20px;
+    }
+
+    .filter-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .filter-btn {
+      border: 1px solid #efd5d5;
+      background: #fff6f6;
+      color: #800000;
+      padding: 10px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.25s;
+    }
+
+    .filter-btn.active-filter {
+      background: #800000;
+      color: white;
+      border-color: #aa1212;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .portfolio-card {
+      background: #fff9f9;
+      border: 1px solid #efdfdf;
+      border-radius: 18px;
+      overflow: hidden;
+      transition: 0.25s;
+    }
+
+    .portfolio-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(128, 0, 0, 0.12);
+    }
+
+    .portfolio-thumb {
+      height: 170px;
+      background: linear-gradient(135deg, #800000, #d07c7c);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: 700;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .smart-campus-thumb {
+      background: linear-gradient(135deg, #800000, #c94c4c);
+    }
+
+    .phone-mockup {
+      width: 100px;
+      height: 145px;
+      background: #fffafa;
+      border-radius: 18px;
+      padding: 8px;
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .mockup-header {
+      height: 34px;
+      background: linear-gradient(135deg, #800000, #c94c4c);
+      border-radius: 12px;
+    }
+
+    .mockup-card {
+      height: 18px;
+      background: #f4dddd;
+      border-radius: 8px;
+    }
+
+    .mockup-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+
+    .mockup-grid span {
+      height: 24px;
+      background: #fff0f0;
+      border: 1px solid #efdada;
+      border-radius: 8px;
+    }
+
+    .portfolio-body {
+      padding: 18px;
+    }
+
+    .portfolio-body h3 {
+      color: #800000;
+      margin-bottom: 8px;
+      font-size: 1.05rem;
+    }
+
+    .portfolio-body p {
+      color: #5a3a3a;
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .portfolio-tag {
+      display: inline-block;
+      background: #fff1f1;
+      color: #800000;
+      border: 1px solid #f0d4d4;
+      border-radius: 999px;
+      padding: 7px 10px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 14px;
+    }
+
+    .tech-stack span {
+      background: #fff1f1;
+      color: #800000;
+      border: 1px solid #f0d4d4;
+      border-radius: 999px;
+      padding: 7px 10px;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+
+    .portfolio-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .portfolio-actions a {
+      text-decoration: none;
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      transition: 0.25s;
+      text-align: center;
+      flex: 1;
+    }
+
+    .btn-live {
+      background: #800000;
+      color: white;
+    }
+
+    .btn-repo {
+      background: white;
+      color: #800000;
+      border: 1px solid #800000;
+    }
+
+    .portfolio-actions a:hover {
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 900px) {
       .portfolio-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 18px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
-  
-      .portfolio-card {
-        background: #fff9f9;
-        border: 1px solid #efdfdf;
-        border-radius: 18px;
-        overflow: hidden;
-        transition: 0.25s;
+    }
+
+    @media (max-width: 768px) {
+      .section-head h2,
+      .section-head p {
+        text-align: center;
       }
-  
-      .portfolio-thumb {
-        height: 170px;
-        background: linear-gradient(135deg, #800000, #d07c7c);
-        display: flex;
-        align-items: center;
+
+      .filter-wrap {
         justify-content: center;
-        color: white;
-        font-size: 1.2rem;
-        font-weight: 700;
       }
-  
-      .portfolio-body {
-        padding: 18px;
+    }
+
+    @media (max-width: 480px) {
+      .section-head h2 {
+        font-size: 1.35rem;
       }
-  
-      .portfolio-body h3 {
-        color: #800000;
-        margin-bottom: 8px;
-        font-size: 1.05rem;
+
+      .portfolio-grid {
+        grid-template-columns: 1fr;
       }
-  
-      .portfolio-body p {
-        color: #5a3a3a;
-        margin-bottom: 12px;
-        font-size: 0.95rem;
+
+      .portfolio-card {
+        border-radius: 16px;
       }
-  
-      .portfolio-tag {
-        display: inline-block;
-        background: #fff1f1;
-        color: #800000;
-        border: 1px solid #f0d4d4;
-        border-radius: 999px;
-        padding: 7px 10px;
-        font-size: 0.82rem;
-        font-weight: 600;
+
+      .portfolio-thumb {
+        height: 150px;
       }
-  
-      @media (max-width: 900px) {
-        .portfolio-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
+
+      .portfolio-actions {
+        flex-direction: column;
       }
-  
-      @media (max-width: 768px) {
-        .section-head h2,
-        .section-head p {
-          text-align: center;
-        }
-  
-        .filter-wrap {
-          justify-content: center;
-        }
-      }
-  
-      @media (max-width: 480px) {
-        .section-head h2 {
-          font-size: 1.35rem;
-        }
-  
-        .portfolio-grid {
-          grid-template-columns: 1fr;
-        }
-  
-        .portfolio-card {
-          border-radius: 16px;
-        }
-  
-        .portfolio-thumb {
-          height: 150px;
-        }
-      }
-    </style>
-  
-    <div class="section-head">
-      <h2>Portfolios</h2>
-      <p>Kumpulan proyek dan karya yang menunjukkan kemampuan saya dalam web development dan desain.</p>
-    </div>
-  
-    <div class="filter-wrap">
-      <button class="filter-btn active-filter" data-filter="all">Semua</button>
-      <button class="filter-btn" data-filter="web">Web</button>
-      <button class="filter-btn" data-filter="design">Design</button>
-      <button class="filter-btn" data-filter="uiux">UI/UX</button>
-    </div>
-  
-      <div class="portfolio-card progress-card filter-item" data-category="design">
-        <div class="portfolio-thumb">Poster</div>
-        <div class="portfolio-body">
-          <h3>Desain Poster Digital</h3>
-          <p>Membuat desain visual untuk kebutuhan promosi, informasi, dan konten media sosial.</p>
-          <span class="portfolio-tag">Design</span>
-        </div>
-      </div>
-  
-      <div class="portfolio-card progress-card filter-item" data-category="design">
-        <div class="portfolio-thumb">Branding</div>
-        <div class="portfolio-body">
-          <h3>Konten Visual Branding</h3>
-          <p>Pembuatan elemen branding sederhana seperti feed post, banner, dan ilustrasi visual.</p>
-          <span class="portfolio-tag">Design</span>
-        </div>
-      </div>
-  
-      <div class="portfolio-card progress-card filter-item" data-category="uiux">
-        <div class="portfolio-thumb">Dashboard</div>
-        <div class="portfolio-body">
-          <h3>Dashboard Concept</h3>
-          <p>Desain dashboard yang ringkas, mudah dipahami, dan rapi di desktop maupun mobile.</p>
-          <span class="portfolio-tag">UI/UX</span>
-        </div>
-      </div>
-    </div>
+    }
+  </style>
+
+  <div class="section-head">
+    <h2>Portfolios</h2>
+    <p>Kumpulan proyek dan karya yang menunjukkan kemampuan saya dalam web development dan desain.</p>
   </div>
+
+  <div class="filter-wrap">
+    <button class="filter-btn active-filter" data-filter="all">Semua</button>
+    <button class="filter-btn" data-filter="web">Web</button>
+    <button class="filter-btn" data-filter="design">Design</button>
+    <button class="filter-btn" data-filter="uiux">UI/UX</button>
+  </div>
+
+  <div class="portfolio-grid">
+
+    <div class="portfolio-card progress-card filter-item" data-category="web">
+      <div class="portfolio-thumb smart-campus-thumb">
+        <div class="phone-mockup">
+          <div class="mockup-header"></div>
+          <div class="mockup-card"></div>
+          <div class="mockup-grid">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-body">
+        <span class="portfolio-tag">Mobile Web App</span>
+
+        <h3>My Smart Campus</h3>
+
+        <p>
+          My Smart Campus adalah aplikasi mobile web yang membantu mahasiswa
+          mengakses dashboard, jadwal kuliah, tugas, notifikasi, profil developer,
+          API integration, dan pengalaman mobile modern dalam satu aplikasi.
+        </p>
+
+        <div class="tech-stack">
+          <span>HTML</span>
+          <span>CSS</span>
+          <span>JavaScript</span>
+          <span>LocalStorage</span>
+          <span>Fetch API</span>
+        </div>
+
+        <div class="portfolio-actions">
+          <a href="https://smart-campus-indira-jasmine-luay.vercel.app" target="_blank" class="btn-live">
+            Live Demo
+          </a>
+        
+          <a href="LINK_REPOSITORY_GITHUB_SMART_CAMPUS_KAMU" target="_blank" class="btn-repo">
+            GitHub Repository
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="portfolio-card progress-card filter-item" data-category="design">
+      <div class="portfolio-thumb">Poster</div>
+      <div class="portfolio-body">
+        <h3>Desain Poster Digital</h3>
+        <p>Membuat desain visual untuk kebutuhan promosi, informasi, dan konten media sosial.</p>
+        <span class="portfolio-tag">Design</span>
+      </div>
+    </div>
+
+    <div class="portfolio-card progress-card filter-item" data-category="design">
+      <div class="portfolio-thumb">Branding</div>
+      <div class="portfolio-body">
+        <h3>Konten Visual Branding</h3>
+        <p>Pembuatan elemen branding sederhana seperti feed post, banner, dan ilustrasi visual.</p>
+        <span class="portfolio-tag">Design</span>
+      </div>
+    </div>
+
+    <div class="portfolio-card progress-card filter-item" data-category="uiux">
+      <div class="portfolio-thumb">Dashboard</div>
+      <div class="portfolio-body">
+        <h3>Dashboard Concept</h3>
+        <p>Desain dashboard yang ringkas, mudah dipahami, dan rapi di desktop maupun mobile.</p>
+        <span class="portfolio-tag">UI/UX</span>
+      </div>
+    </div>
+
+  </div>
+</div>
